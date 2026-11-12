@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://harutool.github.io/sitemap.xml

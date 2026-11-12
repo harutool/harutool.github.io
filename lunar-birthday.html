@@ -1,0 +1,56 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>음력 생일 양력 변환기 · 10년치 날짜 계산 · 캘린더 등록 | 하루툴</title><meta name="description" content="음력 생일·제사 날짜를 넣으면 올해부터 10년치 양력 날짜를 바로 계산하고, 휴대폰 캘린더에 한 번에 등록하는 파일(.ics)까지 만들어 주는 무료 변환기입니다."><link rel="canonical" href="https://harutool.github.io/lunar-birthday"><meta property="og:type" content="website"><meta property="og:title" content="음력 생일 양력 변환기 · 10년치 날짜 계산 · 캘린더 등록 | 하루툴"><meta property="og:description" content="음력 생일·제사 날짜를 넣으면 올해부터 10년치 양력 날짜를 바로 계산하고, 휴대폰 캘린더에 한 번에 등록하는 파일(.ics)까지 만들어 주는 무료 변환기입니다."><meta property="og:url" content="https://harutool.github.io/lunar-birthday"><meta property="og:locale" content="ko_KR"><meta name="robots" content="index,follow"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"음력 생일을 양력으로 어떻게 바꾸나요?","acceptedAnswer":{"@type":"Answer","text":"위 계산기에서 음력 월과 일을 고르고 \"양력 날짜 계산하기\"를 누르면 올해부터 10년치 양력 날짜가 나옵니다."}},{"@type":"Question","name":"윤달 생일은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"윤달을 체크하면 그해 윤달이 있을 때 윤달 날짜로, 없으면 같은 달 평달 날짜로 계산합니다."}},{"@type":"Question","name":"음력 30일 생일인데 그해에 30일이 없으면요?","acceptedAnswer":{"@type":"Answer","text":"그해 그 달이 29일까지인 작은달이면 29일로 계산해 표시합니다."}},{"@type":"Question","name":"구글 캘린더에 음력 반복 일정을 넣을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"구글 캘린더는 음력 반복을 지원하지 않습니다. 계산기 아래 \".ics\" 버튼으로 받은 파일을 열면 여러 해의 날짜가 한 번에 등록되고, 하루 전 알림도 함께 들어갑니다."}}]}</script><style>*{box-sizing:border-box}body{margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;color:#24292f;background:#fbfaf7}
+a{color:#3f5b82}header{background:#fff;border-bottom:1px solid #ece7de}header .w{display:flex;justify-content:space-between;align-items:center;padding:14px 18px}header .logo{font-weight:800;font-size:19px;color:#2e3a30;text-decoration:none}header nav a{margin-left:14px;font-size:14px;text-decoration:none;color:#555}
+.w{max-width:860px;margin:0 auto;padding:0 18px}main{padding:26px 0 60px}h1{font-size:30px;line-height:1.3;margin:6px 0 12px;letter-spacing:-.02em}h2{font-size:21px;margin:34px 0 12px}h3{font-size:17px;margin:20px 0 8px}
+.lead{color:#555;font-size:17px}.card{background:#fff;border:1px solid #ece7de;border-radius:14px;padding:18px 20px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:15px}th,td{padding:9px 10px;border-bottom:1px solid #f0ebe3;text-align:left}th{background:#f3f6f1;font-weight:700}
+.red{color:#d0453b;font-weight:700}.blue{color:#3a6fb0}.badge{display:inline-block;background:#e8efe5;color:#4d6b50;border-radius:99px;padding:2px 10px;font-size:13px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.tool{display:block;background:#fff;border:1px solid #ece7de;border-radius:14px;padding:18px;text-decoration:none;color:inherit}.tool b{display:block;font-size:18px;margin-bottom:4px}.tool span{color:#666;font-size:14px}
+.promo{background:#f3f6f1;border:1px solid #dfe8db;border-radius:14px;padding:16px 18px;margin:28px 0}.promo b{display:block;margin-bottom:4px}.promo a.btn,.btn{display:inline-block;margin-top:8px;background:#6b8a6e;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:99px;border:0;cursor:pointer;font-size:15px}
+input,select{font:inherit;padding:9px 11px;border:1px solid #d9d2c6;border-radius:10px;background:#fff}label{font-weight:700;font-size:14px;display:inline-flex;flex-direction:column;gap:4px;margin:0 10px 10px 0}
+.muted{color:#777;font-size:14px}footer{border-top:1px solid #ece7de;padding:22px 0;color:#888;font-size:13px}details{background:#fff;border:1px solid #ece7de;border-radius:12px;padding:12px 16px;margin:8px 0}summary{font-weight:700;cursor:pointer}</style></head><body><header><div class="w"><a class="logo" href="/">하루툴</a><nav><a href="/2027-holidays">2027 공휴일</a><a href="/lunar-birthday">음력 생일 변환</a></nav></div></header><main><div class="w"><h1>음력 생일 양력 변환기</h1><p class="lead">음력 생일·제사·기념일을 넣으면 <b>올해부터 10년치 양력 날짜</b>를 바로 계산하고, 휴대폰 캘린더에 한 번에 등록할 수 있는 파일까지 만들어 드려요.</p>
+<div class="card"><label>이름(선택)<input id="nm" placeholder="예: 어머니 생신" maxlength="20"></label><label>음력 월<select id="lm"></select></label><label>음력 일<select id="ld"></select></label><label>윤달<input type="checkbox" id="leap" style="width:20px;height:20px"></label><br><label>시작 연도<input id="fy" type="number" min="1950" max="2090" style="width:110px"></label><label>기간<select id="cnt"><option value="5">5년</option><option value="10" selected>10년</option><option value="20">20년</option></select></label><br><button class="btn" id="go">양력 날짜 계산하기</button></div>
+<div id="out"></div>
+<h2>양력 → 음력 바꾸기</h2><div class="card"><label>양력 날짜<input type="date" id="sd"></label><p id="rout"></p></div>
+<p class="muted">계산은 브라우저 안에서만 이루어지며 입력한 내용은 어디에도 전송되지 않습니다. 한국 음력(한국천문연구원 기준 달력)과 같은 방식으로 계산하지만, 중요한 일정은 달력으로 한 번 더 확인해 주세요.</p>
+<div class="promo"><b>📅 2027 굿노트 다이어리 (하이퍼링크 PDF)</b>모든 날짜에 음력, 2027 공휴일·대체공휴일이 들어간 511쪽 다이어리. 월간→주간→데일리를 탭 한 번으로 이동하고, 가계부·습관 트래커도 함께 들어 있어요.<br><a class="btn" href="https://kmong.com/gig/862870" rel="noopener" target="_blank">다이어리 보러 가기</a></div>
+<h2>음력 생일, 왜 해마다 날짜가 바뀌나요?</h2><p>음력은 달의 모양을 기준으로 한 달을 29일 또는 30일로 정하기 때문에 1년이 약 354일입니다. 양력(365일)보다 11일 정도 짧아서 같은 음력 날짜도 양력으로는 해마다 앞당겨지고, 약 3년에 한 번 윤달을 넣어 계절과 맞춥니다. 그래서 음력 생일은 매년 양력 날짜를 새로 확인해야 해요.</p>
+<p>2027년 공휴일과 연휴는 <a href="/2027-holidays">2027 공휴일 총정리</a>에서 확인하세요.</p><script>
+(function(){
+var F; try { F = new Intl.DateTimeFormat('ko-KR-u-ca-dangi',{year:'numeric',month:'numeric',day:'numeric',timeZone:'UTC'}); F.formatToParts(new Date()); } catch(e) { F = null; }
+var W=['일','월','화','수','목','금','토'];
+function parts(d){ var p=F.formatToParts(d), o={}; p.forEach(function(x){o[x.type]=x.value;}); var m=o.month||''; return {leap:m.indexOf('윤')===0, m:parseInt(m.replace('윤',''),10), d:parseInt(o.day,10), y:parseInt(o.relatedYear||o.year,10)}; }
+function solarOf(year, lm, ld, leap){ // lunar date in lunar year 'year' -> solar
+  var s=Date.UTC(year,0,1), days=(Date.UTC(year+1,0,1)-s)/864e5, hit=null;
+  for (var i=0;i<days;i++){ var d=new Date(s+i*864e5); var p=parts(d); if(p.m===lm && p.d===ld && p.leap===!!leap){ hit=d; break; } }
+  return hit;
+}
+function fmt(d){ return d.getUTCFullYear()+'년 '+(d.getUTCMonth()+1)+'월 '+d.getUTCDate()+'일 ('+W[d.getUTCDay()]+')'; }
+function pad(n){return (n<10?'0':'')+n;}
+function ymd(d){return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate());}
+var $=function(id){return document.getElementById(id);};
+if(!F){ $('out').innerHTML='<p class="red">이 브라우저는 음력 계산을 지원하지 않습니다. 크롬·엣지·사파리 최신 버전에서 열어 주세요.</p>'; return; }
+var ms=$('lm'), ds=$('ld'); for(var i=1;i<=12;i++) ms.add(new Option(i+'월',i)); for(var j=1;j<=30;j++) ds.add(new Option(j+'일',j));
+var thisYear=new Date().getFullYear(); $('fy').value=thisYear;
+var last=[];
+function run(){
+  var lm=+ms.value, ld=+ds.value, leap=$('leap').checked, fy=+$('fy').value||thisYear, n=+$('cnt').value, name=$('nm').value.trim()||'음력 기념일';
+  var rows='', list=[];
+  for(var y=fy;y<fy+n;y++){ var d=solarOf(y,lm,ld,leap), note='';
+    if(!d && ld===30){ d=solarOf(y,lm,29,leap); note=' <span class="muted">(그해 '+lm+'월이 29일까지라 29일로 계산)</span>'; }
+    if(!d && leap){ d=solarOf(y,lm,ld,false); note=' <span class="muted">(그해 윤'+lm+'월이 없어 평달로 계산)</span>'; }
+    if(d){ list.push(d); rows+='<tr><td>'+y+'년</td><td><b>'+fmt(d)+'</b>'+note+'</td></tr>'; } else rows+='<tr><td>'+y+'년</td><td class="muted">이 해(양력)에는 이 음력 날짜가 오지 않아요. 음력 11·12월 날짜는 해에 따라 1월과 12월로 오가서 생기는 일이에요.</td></tr>'; }
+  last={list:list,name:name};
+  $('out').innerHTML='<h3>음력 '+(leap?'윤':'')+lm+'월 '+ld+'일 → 양력 날짜</h3><table><tr><th>연도</th><th>양력</th></tr>'+rows+'</table><button class="btn" id="ics">휴대폰 캘린더에 한 번에 넣기 (.ics)</button><p class="muted">구글 캘린더는 음력 반복 일정을 지원하지 않아요. 위 버튼으로 받은 파일을 열면 '+list.length+'년치 날짜가 한 번에 등록됩니다.</p>';
+  $('ics').onclick=ics;
+}
+function ics(){
+  var now=new Date(), stamp=ymd(now)+'T000000Z', L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//harutool//lunar//KO','CALSCALE:GREGORIAN'];
+  last.list.forEach(function(d,i){ var e=new Date(d.getTime()+864e5); L.push('BEGIN:VEVENT','UID:'+ymd(d)+'-'+i+'@harutool','DTSTAMP:'+stamp,'DTSTART;VALUE=DATE:'+ymd(d),'DTEND;VALUE=DATE:'+ymd(e),'SUMMARY:'+last.name+' (음력)','BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:내일은 '+last.name,'END:VALARM','END:VEVENT'); });
+  L.push('END:VCALENDAR'); var b=new Blob([L.join('\r\n')],{type:'text/calendar'}); var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=last.name+'_음력.ics'; a.click();
+}
+$('go').onclick=run;
+// reverse: solar -> lunar
+$('sd').valueAsDate=new Date();
+function rev(){ var v=$('sd').value; if(!v) return; var d=new Date(v+'T00:00:00Z'); var p=parts(d); $('rout').innerHTML='양력 '+fmt(d)+' → <b>음력 '+(p.leap?'윤':'')+p.m+'월 '+p.d+'일</b>'; }
+$('sd').onchange=rev; rev();
+})();</script><h2>자주 묻는 질문</h2><details><summary>음력 생일을 양력으로 어떻게 바꾸나요?</summary><p>위 계산기에서 음력 월과 일을 고르고 "양력 날짜 계산하기"를 누르면 올해부터 10년치 양력 날짜가 나옵니다.</p></details><details><summary>윤달 생일은 어떻게 계산하나요?</summary><p>윤달을 체크하면 그해 윤달이 있을 때 윤달 날짜로, 없으면 같은 달 평달 날짜로 계산합니다.</p></details><details><summary>음력 30일 생일인데 그해에 30일이 없으면요?</summary><p>그해 그 달이 29일까지인 작은달이면 29일로 계산해 표시합니다.</p></details><details><summary>구글 캘린더에 음력 반복 일정을 넣을 수 있나요?</summary><p>구글 캘린더는 음력 반복을 지원하지 않습니다. 계산기 아래 ".ics" 버튼으로 받은 파일을 열면 여러 해의 날짜가 한 번에 등록되고, 하루 전 알림도 함께 들어갑니다.</p></details></div></main><footer><div class="w">하루툴 · 날짜·음력·공휴일을 계산해 주는 무료 생활 도구. 계산 결과는 참고용이며, 공휴일은 정부 발표에 따라 바뀔 수 있습니다.</div></footer></body></html>

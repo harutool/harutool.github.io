@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.harutool.jangbi",
+        "sha256_cert_fingerprints": ["1D:37:5C:B4:05:0C:8E:73:8D:48:5E:6C:43:CA:8B:CE:24:6D:52:92:AF:B9:A2:50:F1:4F:85:06:92:91:8B:74"]
+      }
+    }]

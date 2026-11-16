@@ -1,0 +1,19 @@
+{
+  "name": "장비장부 - 굴삭기·중장비 작업일보·미수금",
+  "short_name": "장비장부",
+  "description": "굴삭기·중장비 기사용 장부. 작업일보, 거래처, 미수금, 수익, 거래명세표를 휴대폰과 PC에서 함께 관리하세요.",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f5f8",
+  "theme_color": "#1d2330",
+  "lang": "ko",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

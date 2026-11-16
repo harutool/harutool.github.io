@@ -205,7 +205,8 @@
   }
 
   function paySheet(p) {
-    var cid = p && p.clientId || state.presetClient || state.clientId || "";
+    var rec0 = S.receivables(), owed = Object.keys(rec0).filter(function (k) { return rec0[k].balance > 0 && S.get(k); }).sort(function (a, b) { return rec0[b].balance - rec0[a].balance; });
+    var cid = p && p.clientId || state.presetClient || (state.tab === "client" ? state.clientId : "") || owed[0] || ((S.all("client")[0] || {}).id) || "";
     var bal = cid ? ((S.receivables()[cid] || {}).balance || 0) : 0;
     p = p || { date: today(), clientId: cid, amount: bal > 0 ? bal : "", method: "계좌이체" };
     state.sheet = { kind: "payment", data: p };
@@ -406,6 +407,18 @@
       await SY.syncNow(); closeSheet(); toast("동기화를 시작했어요"); render();
     } catch (e) { msg.textContent = e.message; }
   }
+  function licOk(j) {
+    var p = j && j.purchase || {};
+    return !!(j && j.success) && !p.refunded && !p.chargebacked && !p.subscription_ended_at && !p.subscription_failed_at && !(p.subscription_cancelled_at && new Date(p.subscription_cancelled_at) < new Date());
+  }
+  // 구독 상태를 3일마다 다시 확인 (오프라인이면 유지)
+  async function recheckLicense() {
+    var l = lic(); if (!l || !l.valid || Date.now() - (l.at || 0) < 3 * 864e5) return;
+    try {
+      var r = await fetch("https://api.gumroad.com/v2/licenses/verify", { method: "POST", body: new URLSearchParams({ product_id: C.GUMROAD_PRODUCT_ID, license_key: l.key }) });
+      var j = await r.json(); l.valid = licOk(j); l.at = Date.now(); localStorage.setItem("jb_license", JSON.stringify(l)); render();
+    } catch (e) {}
+  }
   async function activate() {
     var key = $("#lKey").value.trim(), msg = $("#lMsg");
     if (!key) return;
@@ -413,7 +426,7 @@
     try {
       var r = await fetch("https://api.gumroad.com/v2/licenses/verify", { method: "POST", body: new URLSearchParams({ product_id: C.GUMROAD_PRODUCT_ID, license_key: key }) });
       var j = await r.json();
-      if (j.success && !(j.purchase && (j.purchase.refunded || j.purchase.chargebacked))) { localStorage.setItem("jb_license", JSON.stringify({ valid: true, key: key, email: j.purchase && j.purchase.email, at: Date.now() })); msg.textContent = "Pro가 활성화됐어요. 감사합니다!"; setTimeout(function () { closeSheet(); render(); }, 900); }
+      if (licOk(j)) { localStorage.setItem("jb_license", JSON.stringify({ valid: true, key: key, email: j.purchase && j.purchase.email, at: Date.now() })); msg.textContent = "Pro가 활성화됐어요. 감사합니다!"; setTimeout(function () { closeSheet(); render(); }, 900); }
       else msg.textContent = "키가 맞지 않아요. 구매 메일의 키를 그대로 붙여 넣어 주세요.";
     } catch (e) { msg.textContent = "인터넷 연결을 확인해 주세요."; }
   }
@@ -460,6 +473,7 @@
   syncBadge(SY.state());
   render();
   if (SY.session()) SY.syncNow();
+  recheckLicense();
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(function () {});
   self.JBApp = { render: render, state: state };
 })();

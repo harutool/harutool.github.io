@@ -1,8 +1,15 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.github.harutool.jangbi",
-        "sha256_cert_fingerprints": ["1D:37:5C:B4:05:0C:8E:73:8D:48:5E:6C:43:CA:8B:CE:24:6D:52:92:AF:B9:A2:50:F1:4F:85:06:92:91:8B:74"]
-      }
-    }]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.harutool.jangbi",
+      "sha256_cert_fingerprints": [
+        "1D:37:5C:B4:05:0C:8E:73:8D:48:5E:6C:43:CA:8B:CE:24:6D:52:92:AF:B9:A2:50:F1:4F:85:06:92:91:8B:74",
+        "2A:07:6C:1F:19:47:42:63:BD:B4:D5:9A:25:1D:72:E4:07:3F:00:88:7D:2C:96:88:BD:53:1E:60:EE:BB:A8:AC"
+      ]
+    }
+  }
+]

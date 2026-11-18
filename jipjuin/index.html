@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d2330">
+<meta name="description" content="원룸·다가구·상가 집주인을 위한 월세 장부. 자동 청구, 연체 알림, 입금 요청 문자, 연간 임대수입 리포트를 휴대폰과 PC에서 함께 관리하세요.">
+<title>집주인장부 - 월세·임대 관리, 연체·미납 확인</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="icon-192.png" alt=""><b>집주인장부</b></div>
+  <button class="sync" id="syncBadge" data-act="openSync">로컬 저장</button>
+</header>
+<main id="view"></main>
+<button class="fab" id="fab" data-act="newPayment">＋ 입금 기록</button>
+<nav class="tabs" id="tabs">
+  <button data-tab="home" class="on"><i>🏠</i>홈</button>
+  <button data-tab="units"><i>🏘️</i>세입자</button>
+  <button data-tab="collect"><i>💰</i>수납</button>
+  <button data-tab="cost"><i>🧾</i>지출</button>
+  <button data-tab="more"><i>⚙️</i>더보기</button>
+</nav>
+<div class="sheet-bg hidden" id="sheetBg"><div class="sheet" id="sheet"></div></div>
+<div id="toast" class="toast hidden"></div>
+<div id="print" class="print-area"></div>
+<script src="config.js"></script>
+<script src="store.js"></script>
+<script src="sync.js"></script>
+<script src="xlsx.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

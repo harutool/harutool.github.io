@@ -1,0 +1,36 @@
+{
+  "name": "집주인장부 - 월세·임대 관리",
+  "short_name": "집주인장부",
+  "description": "원룸·다가구·상가 집주인을 위한 월세 장부. 자동 청구, 연체 확인, 입금 요청 문자, 연간 임대수입 리포트.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f8",
+  "theme_color": "#1d2330",
+  "categories": [
+    "finance",
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

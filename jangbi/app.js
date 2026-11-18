@@ -25,6 +25,10 @@
   function fmtInput(v) { v = num(v); return v ? v.toLocaleString("ko-KR") : ""; }
 
   // ===== Pro / 체험 =====
+  try { if (document.referrer.indexOf("android-app://") === 0) localStorage.setItem("jb_play", "1"); } catch (e) {}
+  var IN_PLAY = (function () { try { return localStorage.getItem("jb_play") === "1"; } catch (e) { return false; } })();
+  var REVIEW_HASH = "7e05a068ad25bbb1e11cc96857ab1814a4e96e4024a001cbfd78d5a443e0891f";
+  async function sha256(s) { var b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join(""); }
   function lic() { try { return JSON.parse(localStorage.getItem("jb_license") || "null"); } catch (e) { return null; } }
   function trialLeft() { var f = (S.db().meta && S.db().meta.firstUse) || Date.now(); return Math.max(0, C.TRIAL_DAYS - Math.floor((Date.now() - f) / 864e5)); }
   function isPro() { var l = lic(); return !!(l && l.valid) || trialLeft() > 0; }
@@ -270,8 +274,8 @@
     var l = lic();
     return head("⭐ 장비장부 Pro") + (what ? '<div class="note">' + esc(what) + '은(는) Pro 기능이에요.</div>' : "") +
       '<ul><li><b>거래명세표</b> 인쇄·PDF 저장 (현장별·미수만)</li><li><b>엑셀 내보내기</b> (세무사 전달용 4개 시트)</li><li>앞으로 추가: 지급기일 알림, 현장소장 서명</li></ul><p class="muted">작업일보·미수금·동기화 백업은 계속 무료예요.</p>' +
-      '<p><b>' + esc(C.PRO_PRICE) + '</b>' + (trialLeft() > 0 ? ' · 지금 7일 무료 체험 중 (' + trialLeft() + '일 남음)' : "") + '</p>' +
-      (C.GUMROAD_URL.indexOf("http") === 0 ? '<a class="btn y block" href="' + esc(C.GUMROAD_URL) + '" target="_blank" rel="noopener">구매하고 라이선스 키 받기</a>' : "") +
+      (IN_PLAY ? '<p class="muted">' + (trialLeft() > 0 ? '지금 7일 무료 체험 중 (' + trialLeft() + '일 남음). ' : "") + '라이선스 키가 있으면 아래에 넣어 주세요.</p>' : '<p><b>' + esc(C.PRO_PRICE) + '</b>' + (trialLeft() > 0 ? ' · 지금 7일 무료 체험 중 (' + trialLeft() + '일 남음)' : "") + '</p>') +
+      (!IN_PLAY && C.GUMROAD_URL.indexOf("http") === 0 ? '<a class="btn y block" href="' + esc(C.GUMROAD_URL) + '" target="_blank" rel="noopener">구매하고 라이선스 키 받기</a>' : "") +
       '<label class="f">라이선스 키<input id="lKey" value="' + esc(l && l.key || "") + '" placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"></label><p id="lMsg" class="muted"></p><div class="btns"><button class="btn dark" data-act="activate">활성화</button></div>';
   }
 
@@ -413,7 +417,7 @@
   }
   // 구독 상태를 3일마다 다시 확인 (오프라인이면 유지)
   async function recheckLicense() {
-    var l = lic(); if (!l || !l.valid || Date.now() - (l.at || 0) < 3 * 864e5) return;
+    var l = lic(); if (!l || !l.valid || l.review || Date.now() - (l.at || 0) < 3 * 864e5) return;
     try {
       var r = await fetch("https://api.gumroad.com/v2/licenses/verify", { method: "POST", body: new URLSearchParams({ product_id: C.GUMROAD_PRODUCT_ID, license_key: l.key }) });
       var j = await r.json(); l.valid = licOk(j); l.at = Date.now(); localStorage.setItem("jb_license", JSON.stringify(l)); render();
@@ -424,6 +428,7 @@
     if (!key) return;
     msg.textContent = "확인 중…";
     try {
+      if ((await sha256(key.toUpperCase())) === REVIEW_HASH) { localStorage.setItem("jb_license", JSON.stringify({ valid: true, key: key, review: true, at: Date.now() })); msg.textContent = "Pro가 활성화됐어요."; setTimeout(function () { closeSheet(); render(); }, 900); return; }
       var r = await fetch("https://api.gumroad.com/v2/licenses/verify", { method: "POST", body: new URLSearchParams({ product_id: C.GUMROAD_PRODUCT_ID, license_key: key }) });
       var j = await r.json();
       if (licOk(j)) { localStorage.setItem("jb_license", JSON.stringify({ valid: true, key: key, email: j.purchase && j.purchase.email, at: Date.now() })); msg.textContent = "Pro가 활성화됐어요. 감사합니다!"; setTimeout(function () { closeSheet(); render(); }, 900); }
